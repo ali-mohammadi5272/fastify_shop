@@ -20,7 +20,6 @@ const controller = {
         phoneNumberPrefixPattern,
         ""
       );
-
       req.body.phone = changedPhoneNumber;
 
       const isUserExistBefore =
