@@ -16,10 +16,16 @@ const service = {
     return await User.findOne({ where: { id: userId } });
   },
 
-  async getOneByUserNameOrEmail(user: Pick<User, "userName" | "email">) {
+  async getOneByUserNameOrEmailOrPhone(
+    user: Pick<User, "userName" | "email" | "phone">
+  ) {
     return await User.findOne({
       where: {
-        [Op.or]: [{ userName: user.userName }, { email: user.email }],
+        [Op.or]: [
+          { userName: user.userName },
+          { email: user.email },
+          { phone: user.phone },
+        ],
       },
     });
   },

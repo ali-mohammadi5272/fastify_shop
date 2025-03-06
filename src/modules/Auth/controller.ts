@@ -15,10 +15,12 @@ const controller = {
     res: FastifyReply
   ) {
     try {
-      const isUserExistBefore = !!(await userService.getOneByUserNameOrEmail({
-        userName: req.body.userName,
-        email: req.body.email,
-      }));
+      const isUserExistBefore =
+        !!(await userService.getOneByUserNameOrEmailOrPhone({
+          userName: req.body.userName,
+          email: req.body.email,
+          phone: req.body.phone,
+        }));
 
       if (isUserExistBefore) {
         return res.status(400).send({
