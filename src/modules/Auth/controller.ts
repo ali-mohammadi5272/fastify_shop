@@ -3,6 +3,7 @@ import userService from "../User/service";
 import refreshTokenService from "../RefreshToken/service";
 import { CreateOneDtoType } from "../User/dto/create-one.dto";
 import { LoginDtoType } from "./dto/login.dto";
+import { phoneNumberPrefixPattern } from "../../utils/patterns/patterns";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -15,6 +16,13 @@ const controller = {
     res: FastifyReply
   ) {
     try {
+      const changedPhoneNumber = req.body.phone.replace(
+        phoneNumberPrefixPattern,
+        ""
+      );
+
+      req.body.phone = changedPhoneNumber;
+
       const isUserExistBefore =
         !!(await userService.getOneByUserNameOrEmailOrPhone({
           userName: req.body.userName,
@@ -25,7 +33,9 @@ const controller = {
       if (isUserExistBefore) {
         return res.status(400).send({
           statusCode: 400,
-          messages: ["You have been registered with this Username or Email or Phone"],
+          messages: [
+            "You have been registered with this Username or Email or Phone",
+          ],
         });
       }
 
