@@ -1,6 +1,7 @@
 import RefreshToken from "../RefreshToken/model";
 import { sequelize } from "../../configs/db";
 import { Roles } from "./enum/roles.enum";
+import { Genders } from "./enum/gender.enum";
 import { hashPassword } from "../../utils/helperFuncs/helperFuncs";
 import {
   DataTypes,
@@ -12,9 +13,14 @@ import {
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>;
+  declare firstName: string;
+  declare lastName: string;
   declare userName: string;
   declare email: string;
   declare role: Roles;
+  declare gender: Genders;
+  declare phone: Genders;
+  declare image: Genders;
   declare password: string;
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
@@ -29,6 +35,14 @@ User.init(
       autoIncrement: true,
     },
 
+    firstName: {
+      type: DataTypes.STRING,
+    },
+
+    lastName: {
+      type: DataTypes.STRING,
+    },
+
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,15 +55,30 @@ User.init(
       unique: true,
     },
 
-    role: {
-      type: DataTypes.ENUM(Roles.ADMIN, Roles.USER),
+    phone: {
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: Roles.USER,
+      unique: true,
     },
 
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+
+    role: {
+      type: DataTypes.ENUM(Roles.MANAGER, Roles.ADMIN, Roles.USER),
+      allowNull: false,
+      defaultValue: Roles.USER,
+    },
+
+    gender: {
+      type: DataTypes.ENUM(Genders.FEMALE, Genders.MALE),
+      allowNull: false,
+    },
+
+    image: {
+      type: DataTypes.STRING,
     },
 
     createdAt: {
