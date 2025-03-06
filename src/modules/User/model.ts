@@ -19,8 +19,8 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare email: string;
   declare role: Roles;
   declare gender: Genders;
-  declare phone: Genders;
-  declare image: Genders;
+  declare phone: string;
+  declare image: string;
   declare password: string;
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
