@@ -16,6 +16,7 @@ export const db: DatabaseType = {
       email: "ali_mohammadi@gmail.com",
       role: Roles.ADMIN,
       gender: Genders.MALE,
+      age: 20,
       image: "default.image",
       phone: "09152505373",
       password: "ali_mohammadi_123",

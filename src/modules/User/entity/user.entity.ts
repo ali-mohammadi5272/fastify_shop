@@ -10,6 +10,7 @@ export interface UserType {
   role: Roles;
   gender: Genders;
   phone: string;
+  age: number;
   image: string;
   password: string;
   createdAt: Date;

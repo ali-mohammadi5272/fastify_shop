@@ -1,7 +1,7 @@
 import User from "../src/modules/User/model";
 import { db } from "../MockData/db";
 import { sequelize } from "../src/configs/db";
-import { UserType } from "../src/modules/user/entity/user.entity";
+import { UserType } from "../src/modules/User/entity/user.entity";
 import { hashPassword } from "../src/utils/helperFuncs/helperFuncs";
 
 const seed = async () => {

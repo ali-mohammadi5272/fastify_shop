@@ -6,6 +6,7 @@ export interface CreateOneDtoType {
   userName: string;
   email: string;
   gender: Genders;
+  age: number;
   phone: string;
   image: string;
   password: string;
