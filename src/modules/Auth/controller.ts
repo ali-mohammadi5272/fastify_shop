@@ -25,7 +25,7 @@ const controller = {
       if (isUserExistBefore) {
         return res.status(400).send({
           statusCode: 400,
-          messages: ["You have been registered with this Username or Email"],
+          messages: ["You have been registered with this Username or Email or Phone"],
         });
       }
 
